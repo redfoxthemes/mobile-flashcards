@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-import ColorTools from 'color';
-import randomColor from 'randomcolor';
+
 var bgColor = [
       '#CDF7F6',
       '#8FB8DE',
