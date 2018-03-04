@@ -2,11 +2,9 @@
 // Project README identifies which platform(s) have been tested.
 
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Platform, StatusBar } from 'react-native';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { View } from 'react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { Constants } from 'expo';
 
 import { styles } from './components/styles';
 import reducer from './utils/reducers';
@@ -55,6 +53,7 @@ export default class App extends React.Component {
           },
       }
     );
+
     return (
       <Provider store={store}>
            <View  style={{flex: 1}}>

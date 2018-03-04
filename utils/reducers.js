@@ -24,6 +24,7 @@ function decks(state = initialState, action) {
         }
         case ADD_DECK_COMPLETED:
         return {
+          ...state,
         decks: state.decks.concat(action.payload.deck)
         }
         case ADD_CARD_COMPLETED:

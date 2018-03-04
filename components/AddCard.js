@@ -3,7 +3,7 @@
 // Submitting the form correctly adds the question to the deck.
 
 import React, { Component } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import { styles } from './styles';
 import { StackNavigator } from 'react-navigation';
 import uuidV4 from 'uuid/v4';
@@ -58,8 +58,9 @@ this.setState({
         <TextInput style={styles.txtInput} placeholder="Question..." onChangeText={cardQuestion => this.onCardInputChange('question', cardQuestion)} value={this.state.question}/>
         <TextInput style={styles.txtInput} placeholder="Answer..." onChangeText={cardAnswer => this.onCardInputChange('answer', cardAnswer)} value={this.state.answer}/>
           <TouchableOpacity style={styles.roundedButton} onPress={() => {
+            Keyboard.dismiss()
             this.saveCard()
-            this.props.navigation.goBack()}}>
+            this.props.navigation.navigate('SingleDeck')}}>
           <Text style={styles.smallFontText}>SUBMIT</Text>
           </TouchableOpacity>
         </View>

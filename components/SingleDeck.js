@@ -9,7 +9,7 @@ import { styles } from './styles';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
-import {  getDecks, getDeckCompleted, getDeck, deleteDeck } from '../utils/actions';
+
 class SingleDeck extends Component {
 
   static navigationOptions = ({ navigation }) => {
@@ -36,7 +36,7 @@ class SingleDeck extends Component {
 
   componentDidMount() {
       this.fadeAnimation();
-    }
+  }
 
   fadeAnimation() {
     this.fadingTransitionValue.setValue(0);
@@ -80,7 +80,6 @@ class SingleDeck extends Component {
     )
   }
 }
-
 
 function mapStateToProps (state) {
   return {deck: state.decks.deck}
