@@ -7,7 +7,7 @@ import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { StackNavigator } from 'react-navigation';
 import uuidV4 from 'uuid/v4';
-import { addCardToDeck, getDeck } from '../utils/actions';
+import { addCardToDeck, getDeckCompleted } from '../utils/actions';
 import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
 
@@ -17,15 +17,11 @@ class AddCard extends Component {
     title: 'Add Card',
   };
 
-
-  constructor(props){
-    super(props);
-      this.state={
+    state={
         cardId: '',
         question: '',
         answer: ''
       }
-  }
 
 onCardInputChange = (key, value) => {
   this.setState({
@@ -42,9 +38,10 @@ saveCard = () => {
         question: this.state.question,
         answer: this.state.answer
       };
-
-  this.props.dispatchAddCard(deck, card);
-  this.props.dispatchGetDeck(deck.deckId);
+      const newCards = deck.cards.concat(card);
+      deck['cards'] = newCards;
+  this.props.dispatchAddCard(deck);
+  this.props.dispatchGetDeck(deck);
 
 this.setState({
   cardId: '',
@@ -60,7 +57,9 @@ this.setState({
         <View style={styles.form}>
         <TextInput style={styles.txtInput} placeholder="Question..." onChangeText={cardQuestion => this.onCardInputChange('question', cardQuestion)} value={this.state.question}/>
         <TextInput style={styles.txtInput} placeholder="Answer..." onChangeText={cardAnswer => this.onCardInputChange('answer', cardAnswer)} value={this.state.answer}/>
-          <TouchableOpacity style={styles.roundedButton} onPress={this.saveCard}>
+          <TouchableOpacity style={styles.roundedButton} onPress={() => {
+            this.saveCard()
+            this.props.navigation.goBack()}}>
           <Text style={styles.smallFontText}>SUBMIT</Text>
           </TouchableOpacity>
         </View>
@@ -71,8 +70,8 @@ this.setState({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchAddCard: (deck, card) => dispatch(addCardToDeck(deck, card)),
-    dispatchGetDeck: (deckId) => dispatch(getDeck(deckId))
+    dispatchAddCard: (deck) => dispatch(addCardToDeck(deck)),
+    dispatchGetDeck: (deck) => dispatch(getDeckCompleted(deck))
   }
 }
 export default connect(null, mapDispatchToProps)(AddCard);

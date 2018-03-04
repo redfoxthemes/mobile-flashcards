@@ -48,24 +48,6 @@ function decks(state = initialState, action) {
         }
       }
 
-//////////////////
-// case DELETE_DECK_COMPLETED:
-//   return {
-//     decks: state.decks.filter(deck => deck.deckId !== action.payload.deckId)
-// }
-//
-// case DELETE_CARD_COMPLETED:
-// const editedDecks = state.decks.map(deck => {
-//   if(deck.deckId === action.payload.deckId) {
-//   return  deck.cards.filter(card => card.cardId !== action.payload.card.cardId)
-//   }
-//   return deck;
-// });
-//   return {
-//   ...state,
-//     decks: editedDecks
-// }
-//////////////////
 export default combineReducers({
   decks
 })

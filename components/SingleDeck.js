@@ -9,7 +9,7 @@ import { styles } from './styles';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
-
+import {  getDecks, getDeckCompleted, getDeck, deleteDeck } from '../utils/actions';
 class SingleDeck extends Component {
 
   static navigationOptions = ({ navigation }) => {
@@ -43,22 +43,22 @@ class SingleDeck extends Component {
       Animated.timing(
         this.fadingTransitionValue,
         {toValue: 1,
-        duration: 800,
+        duration: 600,
         }
       ).start();
   }
 
   render() {
-    const { deck } = this.props;
+    const deck = this.props.deck;
     const { navigate } = this.props.navigation;
-
-    return (
+    const cardCount = this.props.deck.cards.length;
+      return (
         <Animated.View  style={[{opacity: this.fadingTransitionValue}, styles.container]}>
           <View style={styles.paddedItem}>
           <TouchableHighlight style={styles.button} underlayColor="orange">
             <View style={styles.innerContainer}>
               <Text style={styles.largeFontText }>{deck.title}</Text>
-              <Text style={styles.smallFontText}>{deck.cards.length} cards</Text>
+              <Text style={styles.smallFontText}>{cardCount} cards</Text>
             </View>
           </TouchableHighlight>
           </View>

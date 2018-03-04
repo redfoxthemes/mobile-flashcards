@@ -75,8 +75,6 @@ export function addDeck( value ) {
 export function addCardToDeck(deck, newCard) {
   return dispatch => {
     AsyncStorage.getItem(FLASHCARDS_KEY).then((results) => {
-      const newCards = deck.cards.concat(newCard);
-      deck['cards'] = newCards;
      const editedDecks = (JSON.parse(results)).map(storedDeck => {
             if(storedDeck.deckId === deck.deckId) {
               return deck;
@@ -85,21 +83,8 @@ export function addCardToDeck(deck, newCard) {
           });
           AsyncStorage.setItem(FLASHCARDS_KEY, JSON.stringify(editedDecks), () =>
           {dispatch(getDecksCompleted(editedDecks))})
-          .catch((err) => console.log('Error in addCardToDeck()', err));
-    })
-  }
-}
-export function getDeck(deckId) {
-  return dispatch => {
-    AsyncStorage.getItem(FLASHCARDS_KEY).then((results) => {
-    (JSON.parse(results)).map(storedDeck => {
-            if(storedDeck.deckId === deckId) {
-              dispatch(getDeckCompleted(storedDeck))
-            }
-          });
-        })
-          .catch((err) => console.log('Error in getDeck()', err));
-  }
+        }).catch((err) => console.log('Error in addCardToDeck()', err));
+      }
 }
 // deleteDeck: takes in a single argument, deckId, and deletes the deck associated with that id
 export function deleteDeck(deckId) {
@@ -129,7 +114,6 @@ function getDecksCompleted(decks) {
 }
 //getSingleDeckCompleted(decks) is an action creator that returns a selected deck object to reducer
 export function getDeckCompleted(deck) {
-  console.log('dispatched getDeckCompleted')
   return {
     type: GET_DECK_COMPLETED,
     payload: {

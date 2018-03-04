@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native';
-
+import { cyan, blue, purple, pink, white, grey } from '../utils/colors'
 var bgColor = [
-      '#CDF7F6',
-      '#8FB8DE',
-      '#9A94BC',
-      '#9B5094',
+      cyan,
+      blue,
+      purple,
+      pink,
     ];
 var color = bgColor[Math.floor(Math.random()*bgColor.length)];
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F1F0F0',
+    backgroundColor: white,
     justifyContent: 'center',
   },
 modalContainer: {
@@ -88,7 +88,7 @@ counter: {
   paddingBottom: 30,
 },
 textButton: {
-  color: '#9A94BC',
+  color: purple,
   fontSize: 18,
   paddingTop: 10,
   paddingBottom: 10,
@@ -97,7 +97,7 @@ textButton: {
 form: {
   flex: 1,
   height: 100,
-  backgroundColor: '#C8C5C3',
+  backgroundColor: grey,
 },
 txtInput: {
   margin: 5,

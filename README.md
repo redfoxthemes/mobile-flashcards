@@ -7,7 +7,7 @@ It has the ability to run a Quiz, which allows the user to mark correct and inco
 
 COMPATIBILITY:
 
-Mobile-Flashcards app was tested on both Android and iOS actual mobile devices.
+Mobile-Flashcards app was tested on both Android and iOS physical mobile devices.
 
 INSTALLATION:
 

@@ -59,7 +59,7 @@ getDeck = (deck) => {
             <View style={styles.paddedItem} key={deck.deckId}>
             <TouchableHighlight style={styles.button} onPress={() => {
               this.getDeck(deck)
-            navigate('SingleDeck')
+            navigate('SingleDeck', { deck: deck })
             }}>
               <View style={styles.innerContainer}>
                 <Text style={styles.largeFontText}>{deck.title}</Text>

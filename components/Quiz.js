@@ -98,7 +98,7 @@ this.cardXPos.setValue(0);
       Animated.timing(
         this.fadingTransitionValue,
         {toValue: 1,
-        duration: 3000,
+        duration: 600,
         }
       ).start();
   }

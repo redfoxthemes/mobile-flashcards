@@ -13,13 +13,11 @@ class AddDeck extends Component {
   static navigationOptions = {
     title: 'Add Deck',
   };
-
-  constructor(props){
-    super(props);
-      this.state={
+  
+      state={
         title: ''
       }
-  }
+
 
 onDeckInputChange = (title) => {
   this.setState({title});
@@ -47,7 +45,9 @@ addDeck = () => {
         <Text style={styles.smallFontText}>What is the title of your new deck?</Text>
         <View style={styles.form}>
           <TextInput style={styles.txtInput} placeholder="Your deck title goes here..." onChangeText={deckTitle => this.onDeckInputChange(deckTitle)} value={this.state.title}/>
-          <TouchableOpacity style={styles.roundedButton} onPress={this.addDeck}>
+          <TouchableOpacity style={styles.roundedButton} onPress={() => {
+            this.addDeck()
+            this.props.navigation.goBack()}}>
           <Text style={styles.smallFontText}>SUBMIT</Text>
           </TouchableOpacity>
         </View>
